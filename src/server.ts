@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import app from "./app.js";
 import type { Server } from "http";
 import config from "./app/config/index.js";
+import { seedSuperAdmin } from "./app/utlis/seedSuperAdmin.js";
 
 
 
@@ -24,7 +25,11 @@ const main = async () => {
   }
 }
 
-main()
+
+(async () => {
+    await main()
+    await seedSuperAdmin()
+})()
 
 process.on('SIGTERM',() =>{
     console.log('SIGTERM dective.. server down');

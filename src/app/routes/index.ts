@@ -1,0 +1,21 @@
+import { Router } from "express";
+import { userRoutes } from "../modules/user/user.route.js";
+import { AuthRoutes } from "../modules/auth/auth.route.js";
+
+const rounter = Router();
+
+const modulRouter = [
+  {
+    path: "/user",
+    route: userRoutes,
+  },
+
+  {
+    path: "/auth",
+    route: AuthRoutes,
+  },
+];
+
+modulRouter.forEach((route) => rounter.use(route.path, route.route));
+
+export default rounter;

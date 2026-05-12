@@ -8,10 +8,12 @@ dotenv.config({
 export default {
   port: process.env.PORT,
   database_url: process.env.MONGO_CONNECTION_STRING,
-  node_env:process.env.NODE_ENV
-//   bcrypt_salt_round: process.env.BCRYPT_SALT_ROUND,
-//   jwt_acess_token_secret: process.env.JWT_ACCESS_SECRET_KEY,
-//   jwt_access_token_expires_in: process.env.JWT_ACCESS_EXPIRES_IN,
+  node_env:process.env.NODE_ENV,
+  bcrypt_salt_round: process.env.BCRYPT_SALT_ROUND,
+  jwt_acess_token_secret: process.env.JWT_ACCESS_SECRET_KEY,
+  jwt_access_token_expires_in: process.env.JWT_ACCESS_EXPIRES_IN,
+ super_admin_email: process.env.SUPER_ADMIN_EMAIL,
+ super_admin_password: process.env.SUPER_ADMIN_PASSWORD,
 //   refresh_secret: process.env.JWT_REFRESH_SECRET,
 //   refresh_expires_in: process.env.JWT_REFRESH_EXPIRES_IN,
 
