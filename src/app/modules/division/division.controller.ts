@@ -1,0 +1,68 @@
+
+import { catchAsync } from "../../utlis/catchAsync.js";
+import { DivisionService } from "./division.service.js";
+import { sendResponse } from "../../utlis/sendResponse.js";
+import type { Request, Response } from "express";
+
+
+
+const createDivision = catchAsync(async (req: Request, res: Response) => {
+    const result = await DivisionService.createDivision(req.body);
+    sendResponse(res, {
+        statusCode: 201,
+        success: true,
+        message: "Division created",
+        data: result,
+    });
+});
+
+const getAllDivisions = catchAsync(async (req: Request, res: Response) => {
+    const result = await DivisionService.getAllDivisions();
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Divisions retrieved",
+        data: result.data,
+        meta: result.meta,
+    });
+});
+const getSingleDivision = catchAsync(async (req: Request, res: Response) => {
+    const slug = req.params.slug
+    const result = await DivisionService.getSingleDivision(slug as string);
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Divisions retrieved",
+        data: result.data,
+    });
+});
+
+const updateDivision = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id;
+
+    const result = await DivisionService.updateDivision(id as string, req.body);
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Division updated",
+        data: result,
+    });
+});
+
+const deleteDivision = catchAsync(async (req: Request, res: Response) => {
+    const result = await DivisionService.deleteDivision(req.params.id as string);
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Division deleted",
+        data: result,
+    });
+});
+
+export const DivisionController = {
+    createDivision,
+    getAllDivisions,
+    getSingleDivision,
+    updateDivision,
+    deleteDivision,
+};

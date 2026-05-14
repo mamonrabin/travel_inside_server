@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { userRoutes } from "../modules/user/user.route.js";
 import { AuthRoutes } from "../modules/auth/auth.route.js";
+import { DivisionRoutes } from "../modules/division/division.route.js";
 
 const rounter = Router();
 
@@ -13,6 +14,10 @@ const modulRouter = [
   {
     path: "/auth",
     route: AuthRoutes,
+  },
+  {
+    path: "/division",
+    route: DivisionRoutes,
   },
 ];
 
