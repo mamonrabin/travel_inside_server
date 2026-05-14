@@ -21,6 +21,14 @@ export default {
   super_admin_email: process.env.SUPER_ADMIN_EMAIL,
   super_admin_password: process.env.SUPER_ADMIN_PASSWORD,
 
+  google_client_id: process.env.GOOGLE_CLIENT_ID,
+  google_client_secret: process.env.GOOGLE_CLIENT_SECRET,
+  google_callback_url: process.env.GOOGLE_CALLBACK_URL,
+
+  express_session_secret: process.env.EXPRESS_SESSION_SECRET,
+
+  frontend_url: process.env.FRONTEND_URL,
+
   //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   //   api_key: process.env.CLOUDINARY_API_KEY,
   //   api_secret: process.env.CLOUDINARY_API_SECRET,

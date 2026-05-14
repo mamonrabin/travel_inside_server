@@ -1,12 +1,14 @@
 import httpStatus from "http-status-codes";
-import { IsActive, type IUser } from "../modules/user/user.interface.js";
+import { IsActive} from "../modules/user/user.interface.js";
 import { generateToken, verifyToken } from "./jwt.js";
 import config from "../config/index.js";
 import type { JwtPayload } from "jsonwebtoken";
 import { userModel } from "../modules/user/user.model.js";
 import appError from "../errorsHelpers/appErrors.js";
 
-export const createUserTokens = (user: IUser) => {
+// (user: IUser)
+
+export const createUserTokens = (user: JwtPayload) => {
   const jwtPayload = {
     userId: user._id,
     email: user.email,
