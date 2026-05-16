@@ -29,6 +29,19 @@ export default {
 
   frontend_url: process.env.FRONTEND_URL,
 
+  ssl_store_id: process.env.SSL_STORE_ID,
+  ssl_store_pass: process.env.SSL_STORE_PASS,
+  ssl_payment_api: process.env.SSL_PAYMENT_API,
+  ssl_validation_api: process.env.SSL_VALIDATION_API,
+
+  ssl_success_backend_url: process.env.SSL_SUCCESS_BACKEND_URL,
+  ssl_fail_backend_url: process.env.SSL_FAIL_BACKEND_URL,
+  ssl_cancel_backend_url: process.env.SSL_CANCEL_BACKEND_URL,
+
+  ssl_success_frontend_url: process.env.SSL_SUCCESS_FRONTEND_URL,
+  ssl_fail_frontend_url: process.env.SSL_FAIL_FRONTEND_URL,
+  ssl_cancel_frontend_url: process.env.SSL_CANCEL_FRONTEND_URL,
+
   //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   //   api_key: process.env.CLOUDINARY_API_KEY,
   //   api_secret: process.env.CLOUDINARY_API_SECRET,
