@@ -13,8 +13,9 @@ import { handlerDuplicateError } from "../helpers/handleDuplicateError.js";
 import { handleCastError } from "../helpers/handleCastError.js";
 import { handlerZodError } from "../helpers/handlerZodError.js";
 import { handlerValidationError } from "../helpers/handlerValidationError.js";
+import { deleteImageFromCLoudinary } from "../config/cloudinary.config.js";
 
-const globalErrHandler: ErrorRequestHandler = (
+const globalErrHandler: ErrorRequestHandler = async(
   err,
   req: Request,
   res: Response,
@@ -23,6 +24,17 @@ const globalErrHandler: ErrorRequestHandler = (
   if (config.node_env === "development") {
     console.log(err);
   }
+
+ if (req.file) {
+        await deleteImageFromCLoudinary(req.file.path)
+    }
+
+    if (req.files && Array.isArray(req.files) && req.files.length) {
+        const imageUrls = (req.files as Express.Multer.File[]).map(file => file.path)
+
+        await Promise.all(imageUrls.map(url => deleteImageFromCLoudinary(url)))
+    }
+
 
   let errorSources: TErrorSources[] = [];
   let statusCode = 500;
