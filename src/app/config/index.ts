@@ -42,11 +42,13 @@ export default {
   ssl_fail_frontend_url: process.env.SSL_FAIL_FRONTEND_URL,
   ssl_cancel_frontend_url: process.env.SSL_CANCEL_FRONTEND_URL,
 
-    cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    cloudinary_api_key: process.env.CLOUDINARY_API_KEY,
-    cloudinary_api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  cloudinary_api_key: process.env.CLOUDINARY_API_KEY,
+  cloudinary_api_secret: process.env.CLOUDINARY_API_SECRET,
 
-  //   email_user: process.env.EMAIL_USERNAME,
-  //   email_pass: process.env.EMAIL_PASSWORD,
-  //   email_from: process.env.EMAIL_FROM,
+  smtp_host: process.env.SMTP_HOST,
+  smtp_port: process.env.SMTP_PORT,
+  smtp_user: process.env.SMTP_USERNAME,
+  smtp_from: process.env.SMTP_FROM,
+  smtp_pass: process.env.SMTP_PASS,
 };
