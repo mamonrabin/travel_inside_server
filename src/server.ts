@@ -5,6 +5,7 @@ import app from "./app.js";
 import type { Server } from "http";
 import config from "./app/config/index.js";
 import { seedSuperAdmin } from "./app/utlis/seedSuperAdmin.js";
+import { connectRedis } from "./app/config/redis.config.js";
 
 
 
@@ -27,6 +28,7 @@ const main = async () => {
 
 
 (async () => {
+    await connectRedis()
     await main()
     await seedSuperAdmin()
 })()

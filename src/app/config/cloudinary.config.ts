@@ -2,11 +2,11 @@
 
 // Frontedn -> Form Data with Image File -> Multer -> Form data -> Req (Body + File)
 
-import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary, type UploadApiResponse } from "cloudinary";
 import config from "./index.js";
 import appError from "../errorsHelpers/appErrors.js";
 
-
+import stream from "stream";
 // Amader folder -> image -> form data -> File -> Multer -> Amader project / pc te Nijer ekta folder(temporary) -> Req.file
 
 //req.file -> cloudinary(req.file) -> url -> mongoose -> mongodb
@@ -17,6 +17,39 @@ cloudinary.config({
     api_key: config.cloudinary_api_key as string,
     api_secret: config.cloudinary_api_secret as string
 })
+
+
+export const uploadBufferToCloudinary = async (buffer: Buffer, fileName: string): Promise<UploadApiResponse | undefined> => {
+    try {
+        return new Promise((resolve, reject) => {
+
+            const public_id = `pdf/${fileName}-${Date.now()}`
+
+            const bufferStream = new stream.PassThrough();
+            bufferStream.end(buffer)
+
+            cloudinary.uploader.upload_stream(
+                {
+                    resource_type: "auto",
+                    public_id: public_id,
+                    folder: "pdf"
+                },
+                (error, result) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    resolve(result)
+                }
+            ).end(buffer)
+
+
+        })
+
+    } catch (error: any) {
+        console.log(error);
+        throw new appError(401, `Error uploading file ${error.message}`)
+    }
+}
 
 export const deleteImageFromCLoudinary = async (url: string) => {
     try {

@@ -5,6 +5,7 @@ import { DivisionRoutes } from "../modules/division/division.route.js";
 import {TourtypeRoutes } from "../modules/tourtype/tourtype.route.js";
 import { TourRoutes } from "../modules/tour/tour.route.js";
 import { BookingRoutes } from "../modules/booking/booking.route.js";
+import { OtpRoutes } from "../modules/otp/otp.route.js";
 
 const rounter = Router();
 
@@ -33,7 +34,11 @@ const modulRouter = [
   {
         path: "/booking",
         route: BookingRoutes
-    }
+    },
+    {
+        path: "/otp",
+        route: OtpRoutes
+    },
 ];
 
 modulRouter.forEach((route) => rounter.use(route.path, route.route));
