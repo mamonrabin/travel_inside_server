@@ -8,6 +8,7 @@ import globalErrHandler from "./app/middlewares/golballErrorHandler.js";
 import notFoundRoute from "./app/middlewares/notFoundRoute.js";
 import passport from "passport";
 import "../src/app/config/passport.js";
+import config from "./app/config/index.js";
 
 app.use(expressSession({
     secret:"your secreet",
@@ -20,7 +21,11 @@ app.use(passport.session())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: config.frontend_url,
+    credentials: true
+}))
 app.use(cookieParser())
 
 app.use('/api/v1', rounter);
